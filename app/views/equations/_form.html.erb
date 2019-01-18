@@ -1,0 +1,22 @@
+<%= form_with(model: equation, local: true) do |form| %>
+  <% if equation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(equation.errors.count, "error") %> prohibited this equation from being saved:</h2>
+
+      <ul>
+      <% equation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :formula %>
+    <%= form.text_field :formula, id: :equation_formula %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

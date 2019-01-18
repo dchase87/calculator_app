@@ -1,0 +1,12 @@
+<h1>Calculator</h1>
+
+<!-- <%= render 'form', equation: @equation %> -->
+<%= form_for(@equation) do |f| %>
+  <label>Formula:</label><br>
+    <%= f.text_field :formula %><br>
+  <%= f.submit %>
+<% end %>
+
+
+<%= @equation.formula && !@equation.formula.include?(' ') && !@equation.formula.chars.any? {|c| ('a'..'z').include? c.downcase} ? @equation.formula : nil %><br>
+<%= @equation.formula != nil ? final_tally(@equation.formula) : nil %>
